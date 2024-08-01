@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ef309a224a90043a6d34ac07ab11f3, type: 3}
+  m_Name: LittleRedRidingHood
+  m_EditorClassIdentifier: 
+  <Title>k__BackingField: LITTLE RED RIDING HOOD
+  <Content>k__BackingField: Once upon a time there was a sweet little girl. Everyone
+    who saw her liked her, but most of all her grandmother, who did not know what
+    to give the child next. Once she gave her a little hood made of red velvet. Because
+    it suited her so well, and she wanted to wear it all the time, she came to be
+    known as Little Red Riding Hood. One day her mother said to her, "Come Little
+    Red Riding Hood. Here is a piece of cake. Take it to your grandmother. She is
+    sick and weak, and it will do her well. Mind your manners and give her my greetings.
+    Behave yourself on the way, and do not leave the path, or you might fall down
+    and drop the cake, and then there will be nothing for your sick grandmother"
+  <StoryBG>k__BackingField: {fileID: 21300000, guid: 720a65242a19f844d91c35d083d1b233,
+    type: 3}
