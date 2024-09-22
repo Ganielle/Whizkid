@@ -132,6 +132,7 @@ public class APIController : MonoBehaviour
                 {
                     Dictionary<string, object> apiresponse = JsonConvert.DeserializeObject<Dictionary<string, object>>(response);
 
+
                     if (!apiresponse.ContainsKey("message"))
                     {
                         //  ERROR PANEL HERE
@@ -156,11 +157,15 @@ public class APIController : MonoBehaviour
                         notificationController.ShowError($"{apiresponse["data"]}", () => errorAction?.Invoke());
                         yield break;
                     }
-
                     if (apiresponse.ContainsKey("data"))
+                    {
+
                         callback?.Invoke(apiresponse["data"].ToString());
+                    }
                     else
+                    {
                         callback?.Invoke("");
+                    }
 
                     noBGLoding.SetActive(loaderEndState);
 

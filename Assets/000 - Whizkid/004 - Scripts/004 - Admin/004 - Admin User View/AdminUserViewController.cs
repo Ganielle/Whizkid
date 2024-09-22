@@ -123,6 +123,23 @@ public class AdminUserViewController : MonoBehaviour
             }, null));
         }
     }
+
+    public void DeleteUser()
+    {
+        notificationController.ShowConfirmation("Are you sure you want to delete this users and all of its data? There's no retrieving  the data once the deletion process starts", () =>
+        {
+            loaderObj.SetActive(true);
+            StartCoroutine(apiController.PostRequest("/users/deleteuser", "", new Dictionary<string, object>
+            {
+                { "userid", userid }
+            }, false, (value) => {
+                notificationController.ShowError("Successfully deleted the user.", () =>
+                {
+                    stateController.CurrentAppState = StateController.AppStates.ADMINUSERMANAGEMENT;
+                });
+            }, null));
+        }, null);
+    }
 }
 
 [System.Serializable]

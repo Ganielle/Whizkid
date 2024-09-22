@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class AdminStoryHIstoryItem : MonoBehaviour
 {
+    [SerializeField] private AdminStoryHistoryController historyController;
+    [SerializeField] private NotificationController notificationController;
+    [SerializeField] private APIController apiController;
     [SerializeField] private StateController stateController;
     [SerializeField] private StoryAdminUserDataController storyAdminDataController;
     [SerializeField] private TextMeshProUGUI dateTMP;
@@ -13,6 +16,7 @@ public class AdminStoryHIstoryItem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI fullNameTMP;
     [SerializeField] private TextMeshProUGUI scoreTMP;
     [SerializeField] private Button viewBtn;
+    [SerializeField] private Button deleteBtn;
 
     [Header("DEBUGGER")]
     [SerializeField] private string historyID;
@@ -26,9 +30,15 @@ public class AdminStoryHIstoryItem : MonoBehaviour
         historyID = id;
 
         if (historyID == "")
+        {
             viewBtn.interactable = false;
+            deleteBtn.interactable = false;
+        }
         else
+        {
             viewBtn.interactable = true;
+            deleteBtn.interactable = true;
+        }
     }
 
     public void ViewBtn()
@@ -36,5 +46,19 @@ public class AdminStoryHIstoryItem : MonoBehaviour
         storyAdminDataController.selectedStoryID = historyID;
         storyAdminDataController.fullname = fullNameTMP.text;
         stateController.CurrentAppState = StateController.AppStates.ADMINSTORYDATA;
+    }
+
+    public void DeleteAssessment()
+    {
+        notificationController.ShowConfirmation("Are you sure you want to delete this assessment? You cannot retrieve the data once the process starts.", () =>
+        {
+            StartCoroutine(apiController.PostRequest("/story/deleteassessment", "", new Dictionary<string, object>
+            {
+                { "assessmentid", historyID }
+            }, false, (value) => 
+            {
+                notificationController.ShowError("Assessment data successfully deleted!", historyController.CallHistoryAPI);
+            }, null));
+        }, null);
     }
 }

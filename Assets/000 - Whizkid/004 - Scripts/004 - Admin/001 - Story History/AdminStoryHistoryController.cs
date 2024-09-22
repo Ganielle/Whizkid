@@ -48,7 +48,7 @@ public class AdminStoryHistoryController : MonoBehaviour
         CallHistoryAPI();
     }
 
-    private void CallHistoryAPI()
+    public void CallHistoryAPI()
     {
         if (stateController.CurrentUserState != userState)
             return;
